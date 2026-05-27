@@ -2,77 +2,79 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>REST Countries API</title>
-
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Where in the world?</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="light-mode">
 
-    <!-- HEADER -->
-
-    <header class="header">
-
-        <div class="container header-content">
-
-            <h1 class="logo">
-                Where in the world?
-            </h1>
-
-            <!-- TOGGLE BUTTON -->
-
-            <button id="theme-toggle" class="theme-switch">
-
-                <span class="toggle-circle">
-                    🌙
-                </span>
-
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar">
+        <div class="navbar__inner">
+            <h1 class="navbar__title">Where in the world?</h1>
+            <button class="dark-toggle" id="darkToggle" aria-label="Toggle dark mode">
+                <span class="dark-toggle__icon">🌙</span>
+                <span class="dark-toggle__label">Dark Mode</span>
             </button>
-
         </div>
-
     </header>
 
-
-    <!-- MAIN -->
-
-    <main class="main">
-
-        <div class="container">
-
-            <!-- SEARCH + FILTER -->
-
-            <div class="top-controls">
-
-                <input type="text" placeholder="Search for a country..." class="search-input">
-
-                <select class="filter-select">
-                    <option value="">Filter by Region</option>
-                    <option value="Africa">Africa</option>
-                    <option value="Americas">Americas</option>
-                    <option value="Asia">Asia</option>
-                    <option value="Europe">Europe</option>
-                    <option value="Oceania">Oceania</option>
-                </select>
-
+    <!-- ===== HOMEPAGE ===== -->
+    <main class="homepage" id="homepage">
+        <div class="controls">
+            <!-- Search -->
+            <div class="search-box">
+                <span class="search-box__icon" aria-hidden="true">🔍</span>
+                <input type="text" class="search-box__input" id="searchInput" placeholder="Search for a country..."
+                    aria-label="Search for a country" />
             </div>
 
+            <!-- Region Filter -->
+            <div class="filter-dropdown" id="filterDropdown">
+                <button class="filter-dropdown__btn" id="filterBtn" aria-haspopup="listbox" aria-expanded="false">
+                    <span id="filterLabel">Filter by Region</span>
+                    <span class="filter-dropdown__arrow" aria-hidden="true">▾</span>
+                </button>
+                <ul class="filter-dropdown__menu" id="filterMenu" role="listbox" aria-label="Filter by region">
+                    <li class="filter-dropdown__item" role="option" data-value="">All</li>
+                    <li class="filter-dropdown__item" role="option" data-value="Africa">Africa</li>
+                    <li class="filter-dropdown__item" role="option" data-value="Americas">Americas</li>
+                    <li class="filter-dropdown__item" role="option" data-value="Asia">Asia</li>
+                    <li class="filter-dropdown__item" role="option" data-value="Europe">Europe</li>
+                    <li class="filter-dropdown__item" role="option" data-value="Oceania">Oceania</li>
+                </ul>
+            </div>
+        </div>
 
-            <!-- COUNTRIES -->
+        <!-- Countries Grid -->
+        <div class="countries-grid" id="countriesGrid" aria-live="polite">
+            <!-- Cards injected by JS -->
+        </div>
 
-            <div class="countries-container">
+        <!-- Loading / Error states -->
+        <p class="status-msg" id="statusMsg"></p>
+    </main>
 
+    <!-- ===== COUNTRY DETAIL PAGE ===== -->
+    <section class="detail-page hidden" id="detailPage" aria-label="Country detail">
+        <div class="detail-page__inner">
+
+            <!-- Back Button -->
+            <button class="back-btn" id="backBtn">
+                <span aria-hidden="true">←</span> Back
+            </button>
+
+            <!-- Detail Content -->
+            <div class="detail-content" id="detailContent">
+                <!-- Injected by JS -->
             </div>
 
         </div>
+    </section>
 
-    </main>
-
-    <script src="./script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 
 </html>
